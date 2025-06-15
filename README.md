@@ -21,8 +21,8 @@ El oso polar representa una nueva etapa para el clásico Pou, aportando frescura
 3. ¡Disfruta cuidando a tu oso polar!
 
 ## Créditos
-- Equipo de desarrollo: [Tu nombre o nombres del equipo]
+- Equipo de desarrollo: [Lupita]
 - Inspirado en el clásico juego Pou
 
 ## Licencia
-Este proyecto es de código abierto y se distribuye bajo la licencia MIT.
+-..-
