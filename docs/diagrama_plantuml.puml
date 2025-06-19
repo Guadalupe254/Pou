@@ -1,0 +1,41 @@
+@startuml
+
+class OsoPolar {
+    - sprite: sf::Sprite
+    - textura: sf::Texture
+    - x: float
+    - y: float
+    + OsoPolar()
+    + dibujar(ventana)
+    + mover(dx, dy)
+}
+
+class Juego {
+    - osoPolar: OsoPolar
+    + Juego()
+    + ejecutar()
+}
+
+class Menu {
+    + Menu()
+    + dibujar(ventana)
+    + manejarEntrada()
+}
+
+class Comida {
+    - tipo: string
+    + Comida(tipo)
+    + dibujar(ventana)
+    + alimentar(osoPolar)
+}
+
+class Animacion {
+    + Animacion()
+    + reproducir()
+}
+
+Juego --> OsoPolar
+Juego --> Menu
+Juego --> Comida
+OsoPolar --> Animacion
+@enduml

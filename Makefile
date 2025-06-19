@@ -7,7 +7,7 @@ BIN_DIR := bin
 SFML := -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lbox2d
 
 # Archivos fuente principales
-POU_SRC := $(SRC_DIR)/Pou_Polar.cpp $(SRC_DIR)/Game.cpp $(SRC_DIR)/PolarBear.cpp $(SRC_DIR)/Menu.cpp $(SRC_DIR)/Food.cpp $(SRC_DIR)/Animation.cpp
+POU_SRC := $(SRC_DIR)/Pou_Polar.cpp $(SRC_DIR)/Game.cpp $(SRC_DIR)/PolarBear.cpp $(SRC_DIR)/Menu.cpp $(SRC_DIR)/Food.cpp $(SRC_DIR)/Animation.cpp $(SRC_DIR)/Ball.cpp
 POU_EXE := $(BIN_DIR)/Pou_Polar.exe
 
 # Regla para compilar el ejecutable principal enlazando todos los .cpp

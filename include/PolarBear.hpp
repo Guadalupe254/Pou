@@ -6,6 +6,7 @@ public:
     PolarBear();
     void draw(sf::RenderWindow& window);
     void move(float dx, float dy);
+    void setHappy(bool happy);
     // Otros métodos relevantes
 private:
     sf::Sprite sprite;
