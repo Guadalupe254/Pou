@@ -1,77 +1,77 @@
 @startuml
 
-class OsoPolar {
+class PolarBear {
     - sprite: sf::Sprite
-    - textura: sf::Texture
+    - texture: sf::Texture
     - x: float
     - y: float
-    - estaFeliz: bool
-    + OsoPolar()
-    + dibujar(ventana)
-    + mover(dx, dy)
-    + ponerFeliz(feliz: bool)
-    + obtenerLimites(): FloatRect
+    - isHappy: bool
+    + PolarBear()
+    + draw(window)
+    + move(dx, dy)
+    + setHappy(happy: bool)
+    + getBounds(): FloatRect
 }
 
-class Pelota {
+class Ball {
     - sprite: sf::Sprite
-    - textura: sf::Texture
+    - texture: sf::Texture
     - x: float
     - y: float
     - vx: float
     - vy: float
-    - friccion: float
-    - arrastrando: bool
-    + Pelota()
-    + dibujar(ventana)
-    + mover(dx, dy)
-    + establecerPosicion(x, y)
-    + obtenerPosicion(): Vector2f
-    + actualizar(ventana, dt)
-    + establecerVelocidad(vx, vy)
-    + obtenerRadio(): float
-    + manejarArrastre(posRaton, presionado)
+    - friction: float
+    - isDragging: bool
+    + Ball()
+    + draw(window)
+    + move(dx, dy)
+    + setPosition(x, y)
+    + getPosition(): Vector2f
+    + update(window, dt)
+    + setVelocity(vx, vy)
+    + getRadius(): float
+    + handleDrag(mousePos, isPressed)
 }
 
-class Comida {
+class Food {
     - sprite: sf::Sprite
-    - textura: sf::Texture
+    - texture: sf::Texture
     - x: float
     - y: float
-    - tipo: int
-    - arrastrando: bool
-    + Comida()
-    + dibujar(ventana)
-    + alimentar()
-    + establecerPosicion(x, y)
-    + obtenerPosicion(): Vector2f
-    + siguienteTipo()
-    + manejarArrastre(posRaton, presionado)
-    + obtenerLimites(): FloatRect
+    - type: int
+    - isDragging: bool
+    + Food()
+    + draw(window)
+    + feed()
+    + setPosition(x, y)
+    + getPosition(): Vector2f
+    + nextType()
+    + handleDrag(mousePos, isPressed)
+    + getBounds(): FloatRect
 }
 
-class Juego {
-    - ventana: sf::RenderWindow
-    - osoPolar: OsoPolar
-    - pelota: Pelota
-    - comida: Comida
-    + Juego()
-    + ejecutar()
+class Game {
+    - window: sf::RenderWindow
+    - polarBear: PolarBear
+    - ball: Ball
+    - food: Food
+    + Game()
+    + run()
 }
 
 class Menu {
     + Menu()
-    + dibujar(ventana)
-    + manejarEvento(evento)
+    + draw(window)
+    + handleEvent(event)
 }
 
 ' ===================== RELACIONES =====================
-Juego --> OsoPolar : "tiene"
-Juego --> Pelota : "tiene"
-Juego --> Comida : "tiene"
-Juego --> Menu : "tiene"
-OsoPolar --> "1" Animacion : "usa"
-Comida --> "*" sf::Texture : "usa"
-Pelota --> "1" sf::Texture : "usa"
+Game --> PolarBear : "tiene polarBear"
+Game --> Ball : "tiene ball"
+Game --> Food : "tiene food"
+Game --> Menu : "tiene menu"
+PolarBear --> "1" Animation : "usa"
+Food --> "*" sf::Texture : "usa"
+Ball --> "1" sf::Texture : "usa"
 
 @enduml
