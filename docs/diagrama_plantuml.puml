@@ -65,12 +65,13 @@ class Menu {
     + manejarEvento(evento)
 }
 
-Juego --> OsoPolar
-Juego --> Pelota
-Juego --> Comida
-Juego --> Menu
-OsoPolar --> "1" Animacion
-Comida --> "*" sf::Texture
-Pelota --> "1" sf::Texture
+' ===================== RELACIONES =====================
+Juego --> OsoPolar : "tiene"
+Juego --> Pelota : "tiene"
+Juego --> Comida : "tiene"
+Juego --> Menu : "tiene"
+OsoPolar --> "1" Animacion : "usa"
+Comida --> "*" sf::Texture : "usa"
+Pelota --> "1" sf::Texture : "usa"
 
 @enduml
