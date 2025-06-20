@@ -7,6 +7,8 @@ public:
     void draw(sf::RenderWindow& window);
     void move(float dx, float dy);
     void setHappy(bool happy);
+    sf::Vector2f getPosicion() const;
+    sf::FloatRect getBounds() const { return sprite.getGlobalBounds(); }
     // Otros métodos relevantes
 private:
     sf::Sprite sprite;

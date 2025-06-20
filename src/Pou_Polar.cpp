@@ -6,6 +6,18 @@
 void mostrarMenuSFML(sf::RenderWindow &window, sf::Font &font, char &opcion) {
     sf::Vector2u winSize = window.getSize();
     window.clear(sf::Color(220, 240, 255));
+    // Fondo del menú principal con Menu_Principal.png (abarca 1024x1024 y centrado)
+    sf::Texture menuPrincipalTexture;
+    if (menuPrincipalTexture.loadFromFile("assets/image/Menu_Principal.png")) {
+        sf::Sprite menuPrincipalSprite(menuPrincipalTexture);
+        float scaleX = static_cast<float>(winSize.x) / 1024.f;
+        float scaleY = static_cast<float>(winSize.y) / 1024.f;
+        menuPrincipalSprite.setScale(scaleX, scaleY);
+        menuPrincipalSprite.setPosition(0, 0);
+        window.draw(menuPrincipalSprite);
+    }
+
+    // Dibuja el menú principal (capa superior)
     // Centrar título y dimensionar
     sf::Text titulo(L"Menú principal de Oso Polar", font, std::min(winSize.x, winSize.y) / 18);
     titulo.setFillColor(sf::Color(30, 30, 60));
@@ -51,6 +63,7 @@ void mostrarMenuSFML(sf::RenderWindow &window, sf::Font &font, char &opcion) {
         txt.setPosition(boxX + menuW / 2, boxY + menuH / 2);
         window.draw(txt);
     }
+
     window.display();
 
     bool seleccion = false;

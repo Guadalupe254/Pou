@@ -1,6 +1,7 @@
 #include <iostream>
 #include "../include/Game.hpp"
 #include "../include/Ball.hpp"
+#include "../include/Food.hpp"
 #include <cmath>
 
 Game::Game() : window(sf::VideoMode(800, 600), "Pou_Polar") {}
@@ -29,11 +30,14 @@ void Game::run() {
     bool jugando = false;
 
     Ball ball;
+    Food comida;
     sf::Clock clock;
     bool dragging = false;
     sf::Vector2f dragOffset;
     bool polarFeliz = false;
     float tiempoFeliz = 0;
+    bool arrastrandoComida = false;
+    sf::Vector2f offsetArrastreComida;
 
     while (window.isOpen()) {
         float dt = clock.restart().asSeconds() * 60.0f; // normalizar a 60fps
@@ -71,6 +75,37 @@ void Game::run() {
                 polarFeliz = true;
                 tiempoFeliz = 120; // 2 segundos a 60fps
             }
+            // Iniciar arrastre de comida
+            if (jugando && event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+                sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+                if (comida.contienePunto(mousePos.x, mousePos.y)) {
+                    arrastrandoComida = true;
+                    offsetArrastreComida = comida.getPosicion() - mousePos;
+                    comida.setArrastrando(true);
+                }
+            }
+            // Terminar arrastre de comida
+            if (jugando && event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left && arrastrandoComida) {
+                arrastrandoComida = false;
+                comida.setArrastrando(false);
+                // Verificar colisión con el oso
+                if (comida.getBounds().intersects(polarBear.getBounds())) {
+                    polarBear.setHappy(true);
+                    if (comida.getAssetActual() == "filete") {
+                        comida.cambiarAAssetHuevo();
+                    } else if (comida.getAssetActual() == "huevo") {
+                        comida.cambiarAAssetPollo();
+                    } else if (comida.getAssetActual() == "pollo") {
+                        comida.reiniciarAsset();
+                    }
+                    comida.setPosicion(30, 440); // Reposicionar comida
+                }
+            }
+            // Mover la comida mientras se arrastra
+            if (jugando && event.type == sf::Event::MouseMoved && arrastrandoComida) {
+                sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+                comida.setPosicion(mousePos.x + offsetArrastreComida.x, mousePos.y + offsetArrastreComida.y);
+            }
         }
         if (jugando && dragging) {
             sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
@@ -99,6 +134,7 @@ void Game::run() {
             polarBear.draw(window);
             ball.update(window, dt);
             ball.draw(window);
+            comida.dibujar(window);
             // Aquí irá la lógica de juego
         }
         window.display();

@@ -5,13 +5,56 @@ class OsoPolar {
     - textura: sf::Texture
     - x: float
     - y: float
+    - estaFeliz: bool
     + OsoPolar()
     + dibujar(ventana)
     + mover(dx, dy)
+    + ponerFeliz(feliz: bool)
+    + obtenerLimites(): FloatRect
+}
+
+class Pelota {
+    - sprite: sf::Sprite
+    - textura: sf::Texture
+    - x: float
+    - y: float
+    - vx: float
+    - vy: float
+    - friccion: float
+    - arrastrando: bool
+    + Pelota()
+    + dibujar(ventana)
+    + mover(dx, dy)
+    + establecerPosicion(x, y)
+    + obtenerPosicion(): Vector2f
+    + actualizar(ventana, dt)
+    + establecerVelocidad(vx, vy)
+    + obtenerRadio(): float
+    + manejarArrastre(posRaton, presionado)
+}
+
+class Comida {
+    - sprite: sf::Sprite
+    - textura: sf::Texture
+    - x: float
+    - y: float
+    - tipo: int
+    - arrastrando: bool
+    + Comida()
+    + dibujar(ventana)
+    + alimentar()
+    + establecerPosicion(x, y)
+    + obtenerPosicion(): Vector2f
+    + siguienteTipo()
+    + manejarArrastre(posRaton, presionado)
+    + obtenerLimites(): FloatRect
 }
 
 class Juego {
+    - ventana: sf::RenderWindow
     - osoPolar: OsoPolar
+    - pelota: Pelota
+    - comida: Comida
     + Juego()
     + ejecutar()
 }
@@ -19,23 +62,15 @@ class Juego {
 class Menu {
     + Menu()
     + dibujar(ventana)
-    + manejarEntrada()
-}
-
-class Comida {
-    - tipo: string
-    + Comida(tipo)
-    + dibujar(ventana)
-    + alimentar(osoPolar)
-}
-
-class Animacion {
-    + Animacion()
-    + reproducir()
+    + manejarEvento(evento)
 }
 
 Juego --> OsoPolar
-Juego --> Menu
+Juego --> Pelota
 Juego --> Comida
-OsoPolar --> Animacion
+Juego --> Menu
+OsoPolar --> "1" Animacion
+Comida --> "*" sf::Texture
+Pelota --> "1" sf::Texture
+
 @enduml

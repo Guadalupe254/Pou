@@ -36,3 +36,7 @@ void PolarBear::setHappy(bool happy) {
     }
     sprite.setTexture(texture);
 }
+
+sf::Vector2f PolarBear::getPosicion() const {
+    return sf::Vector2f(x, y);
+}
