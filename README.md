@@ -24,6 +24,10 @@
 
 Para aprender a jugar y aprovechar todas las funciones del juego, consulta los siguientes manuales incluidos en la carpeta `docs/`:
 
+- [Manual General](docs/Manual_General.md):
+  - Explica de forma global la estructura del proyecto, clases principales, instalación, controles y consejos de personalización.
+  - Ideal para tener una visión completa del juego y el código, tanto para usuarios como para programadores.
+
 - [Manual de Usuario](docs/manual.md):
   - Explica paso a paso cómo instalar, ejecutar y jugar Pou Polar.
   - Incluye controles, objetivos, consejos y requisitos del sistema.
@@ -34,7 +38,7 @@ Para aprender a jugar y aprovechar todas las funciones del juego, consulta los s
   - Explica la estructura del proyecto, dependencias, clases principales, flujo de ejecución y recomendaciones de desarrollo.
   - Incluye sugerencias para nuevas funcionalidades y buenas prácticas.
 
-¡Revisa ambos manuales para sacar el máximo provecho a Pou Polar, ya sea como jugador o desarrollador!
+¡Revisa los manuales para sacar el máximo provecho a Pou Polar, ya sea como jugador o desarrollador!
 
 
 ## ¿Qué hace único a Pou_Polar?

@@ -4,7 +4,7 @@
 Este manual está dirigido a programadores que deseen entender, modificar o ampliar el proyecto "Pou Polar". Aquí encontrarás la estructura del código, explicación de las clases principales, dependencias, flujo de ejecución y recomendaciones para desarrollo y mantenimiento.
 
 ## Estructura del proyecto
-```
+
 Pou_Polar/
 ├── assets/
 │   ├── fonts/
@@ -41,7 +41,7 @@ Pou_Polar/
 Consulta el diagrama de clases (`docs/diagrama_plantuml.puml`) para visualizar relaciones y métodos.
 
 
-## Flujo de ejecución
+## Flujo de ejecución 
 1. **main.cpp / Pou_Polar.cpp**: Inicia la ventana, muestra el menú y valida la edad.
 2. Si el usuario inicia el juego, se crea una instancia de `Game` y se llama a `run()`.
 3. Dentro de `Game::run()`, se gestionan los eventos, actualizaciones y renderizado de objetos (`PolarBear`, `Ball`, `Food`).
